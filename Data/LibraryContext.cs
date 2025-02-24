@@ -1,7 +1,7 @@
 ﻿using LMS_WEB_API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LMS_WEB_API.Data // ✅ Ensure this namespace matches usage in Program.cs
+namespace LMS_WEB_API.Data 
 {
     public class LibraryContext : DbContext
     {

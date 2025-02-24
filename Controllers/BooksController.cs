@@ -16,7 +16,7 @@ namespace LMS_WEB_API.Controllers
             _context = context;
         }
 
-        // ✅ GET All Books
+    
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookDto>>> GetBooks()
         {
@@ -30,13 +30,13 @@ namespace LMS_WEB_API.Controllers
                 ISBN = book.ISBN,
                 TotalCopies = book.TotalCopies,
                 IssuedCopies = book.IssuedCopies,
-                AvailableCopies = Math.Max(book.TotalCopies - book.IssuedCopies, 0) // Ensures non-negative value
+                AvailableCopies = Math.Max(book.TotalCopies - book.IssuedCopies, 0) 
             }).ToList();
 
             return bookDtos;
         }
 
-        // ✅ GET Single Book By ID
+   
         [HttpGet("{id}")]
         public async Task<ActionResult<BookDto>> GetBook(int id)
         {
@@ -58,7 +58,7 @@ namespace LMS_WEB_API.Controllers
             return bookDto;
         }
 
-        // ✅ POST (Add New Book)
+    
         [HttpPost]
         public async Task<ActionResult<Book>> AddBook(Book book)
         {
@@ -67,7 +67,7 @@ namespace LMS_WEB_API.Controllers
             return CreatedAtAction(nameof(GetBook), new { id = book.Id }, book);
         }
 
-        // ✅ PUT (Update Book)
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook(int id, Book book)
         {
@@ -80,7 +80,6 @@ namespace LMS_WEB_API.Controllers
             return NoContent();
         }
 
-        // ✅ DELETE (Delete Book)
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
